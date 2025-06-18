@@ -1,1 +1,87 @@
-<!-- Placeholder while regenerating full HTML with functionality -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gene's Roofing Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('assets/images/bg-construction.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    header {
+      text-align: center;
+      color: white;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    #login-form {
+      max-width: 400px;
+      margin: 5rem auto;
+      background: rgba(255,255,255,0.95);
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #login-form img {
+      max-width: 150px;
+      margin-bottom: 1rem;
+    }
+    input, button {
+      width: 90%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #111;
+      color: white;
+      cursor: pointer;
+    }
+    #main-content {
+      display: none;
+      padding: 2rem;
+      background: #fff;
+    }
+  </style>
+  <script>
+    function login(event) {
+      event.preventDefault();
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+      if ((user === 'genes' && pass === 'gene123') || (user === 'admin' && pass === 'admin123')) {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+      } else {
+        alert('Invalid credentials');
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Gene's Roofing & Construction</h1>
+  </header>
+
+  <section id="login-form">
+    <img src="assets/images/logo.png" alt="Company Logo" />
+    <h2>Login</h2>
+    <form onsubmit="login(event)">
+      <input type="text" id="username" placeholder="Username" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Enter Dashboard</button>
+    </form>
+  </section>
+
+  <div id="main-content">
+    <h2>Welcome to the Dashboard</h2>
+    <p>This is the secured area after login. Here you'll manage materials, contractors, finances and more.</p>
+  </div>
+</body>
+</html>
