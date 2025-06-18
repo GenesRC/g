@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gene's Roofing Dashboard</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#111111" />
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; background: #f4f4f4; color: #333; }
+    header { background: #111; color: white; padding: 1rem; text-align: center; }
+    nav { background: #333; color: white; text-align: center; padding: 0.5rem; }
+    nav a { color: white; margin: 0 1rem; text-decoration: none; }
+    main { padding: 1rem; }
+    section { margin-bottom: 2rem; }
+  </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Gene's Roofing Dashboard</h1>
+  </header>
+  <nav>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#materials">Materials</a>
+    <a href="#contractors">Contractors</a>
+    <a href="#finance">Finance</a>
+    <a href="#images">Images</a>
+    <a href="#login">Login</a>
+  </nav>
+  <main>
+    <section id="dashboard">
+      <h2>📊 Dashboard Overview</h2>
+      <p>Project performance, metrics, and charts will appear here.</p>
+    </section>
+    <section id="materials">
+      <h2>🧱 Materials</h2>
+      <p>Manage material usage and cost per project.</p>
+    </section>
+    <section id="contractors">
+      <h2>👷 Contractors</h2>
+      <p>Register and track contractors and their roles.</p>
+    </section>
+    <section id="finance">
+      <h2>💰 Finance</h2>
+      <p>View and track project income and expenses.</p>
+    </section>
+    <section id="images">
+      <h2>📸 Project Images</h2>
+      <p>Upload and view images related to each project.</p>
+    </section>
+    <section id="login">
+      <h2>🔐 Login Panel</h2>
+      <p>Multi-user login support with roles (Admin, Supervisor, Viewer).</p>
+    </section>
+  </main>
+</body>
+</html>
