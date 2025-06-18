@@ -8,14 +8,37 @@
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#111111" />
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 2rem; background: #f4f4f4; color: #333; }
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; color: #333; }
     header { background: #111; color: white; padding: 1rem; text-align: center; }
     nav { background: #333; color: white; text-align: center; padding: 0.5rem; }
     nav a { color: white; margin: 0 1rem; text-decoration: none; }
     main { padding: 1rem; }
     section { margin-bottom: 2rem; }
+    #login-form { max-width: 400px; margin: 2rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    input[type=text], input[type=password] { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 0.5rem 1rem; background: #111; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #444; }
+    .hidden { display: none; }
   </style>
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loginSection = document.getElementById('login-form');
+      const dashboard = document.getElementById('dashboard');
+      const form = document.getElementById('form');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const user = document.getElementById('username').value;
+        const pass = document.getElementById('password').value;
+        if ((user === 'genes' && pass === 'gene123') || (user === 'admin' && pass === 'admin123')) {
+          loginSection.classList.add('hidden');
+          dashboard.classList.remove('hidden');
+        } else {
+          alert('Invalid credentials');
+        }
+      });
+    });
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js');
     }
@@ -25,6 +48,7 @@
   <header>
     <h1>Gene's Roofing Dashboard</h1>
   </header>
+
   <nav>
     <a href="#dashboard">Dashboard</a>
     <a href="#materials">Materials</a>
@@ -33,30 +57,40 @@
     <a href="#images">Images</a>
     <a href="#login">Login</a>
   </nav>
+
   <main>
-    <section id="dashboard">
+    <section id="login-form">
+      <h2>Login</h2>
+      <form id="form">
+        <input type="text" id="username" placeholder="Username" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section id="dashboard" class="hidden">
       <h2>📊 Dashboard Overview</h2>
       <p>Project performance, metrics, and charts will appear here.</p>
     </section>
-    <section id="materials">
+
+    <section id="materials" class="hidden">
       <h2>🧱 Materials</h2>
       <p>Manage material usage and cost per project.</p>
     </section>
-    <section id="contractors">
+
+    <section id="contractors" class="hidden">
       <h2>👷 Contractors</h2>
       <p>Register and track contractors and their roles.</p>
     </section>
-    <section id="finance">
+
+    <section id="finance" class="hidden">
       <h2>💰 Finance</h2>
       <p>View and track project income and expenses.</p>
     </section>
-    <section id="images">
+
+    <section id="images" class="hidden">
       <h2>📸 Project Images</h2>
       <p>Upload and view images related to each project.</p>
-    </section>
-    <section id="login">
-      <h2>🔐 Login Panel</h2>
-      <p>Multi-user login support with roles (Admin, Supervisor, Viewer).</p>
     </section>
   </main>
 </body>
